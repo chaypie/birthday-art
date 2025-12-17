@@ -8,7 +8,10 @@
 </head>
 
 <body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-700">
-<audio id="bgMusic" src="song.mp3" ></audio>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" src="song.mp3"></audio>
+
   <div class="relative flex flex-col items-center">
 
     <!-- Envelope -->
@@ -51,39 +54,31 @@
 
   </div>
 
+  <!-- SCRIPT (ONLY ONE, FIXED) -->
   <script>
     const envelope = document.getElementById("envelope");
     const flap = document.getElementById("flap");
     const letter = document.getElementById("letter");
+    const music = document.getElementById("bgMusic");
+
+    let opened = false;
 
     envelope.addEventListener("click", () => {
-      flap.style.transition = "transform 0.8s ease";
-      flap.style.transform = "rotateX(180deg)";
+      if (!opened) {
+        flap.style.transition = "transform 0.8s ease";
+        flap.style.transform = "rotateX(180deg)";
 
-<script>
-  const envelope = document.getElementById("envelope");
-  const flap = document.getElementById("flap");
-  const letter = document.getElementById("letter");
-  const music = document.getElementById("bgMusic");
+        music.play();
 
-  let opened = false;
+        setTimeout(() => {
+          envelope.style.display = "none";
+          letter.classList.remove("hidden");
+        }, 500);
 
-  envelope.addEventListener("click", () => {
-    if (!opened) {
-      flap.style.transform = "rotateX(180deg)";
-      flap.style.transition = "transform 0.8s ease";
-
-      music.play(); // 🎵 music starts here
-
-      setTimeout(() => {
-        envelope.style.display = "none";
-        letter.classList.remove("hidden");
-      }, 500);
-
-      opened = true;
-    }
-  });
+        opened = true;
+      }
+    });
   </script>
-  
+
 </body>
 </html>
