@@ -8,7 +8,7 @@
 </head>
 
 <body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-700">
-<audio id="An Art Gallery Could Never Be As Unique As You" src="MRLD.mp3" autoplay></audio>
+<audio id="song.mp3" src="song.mp3" autoplay></audio>
   <div class="relative flex flex-col items-center">
 
     <!-- Envelope -->
@@ -66,6 +66,30 @@
       }, 500);
     });
   </script>
+<script>
+  const envelope = document.getElementById("envelope");
+  const flap = document.getElementById("flap");
+  const letter = document.getElementById("letter");
+  const music = document.getElementById("bgMusic");
 
+  let opened = false;
+
+  envelope.addEventListener("click", () => {
+    if (!opened) {
+      flap.style.transform = "rotateX(180deg)";
+      flap.style.transition = "transform 0.8s ease";
+
+      music.play(); // 🎵 music starts here
+
+      setTimeout(() => {
+        envelope.style.display = "none";
+        letter.classList.remove("hidden");
+      }, 500);
+
+      opened = true;
+    }
+  });
+  </script>
+  
 </body>
 </html>
